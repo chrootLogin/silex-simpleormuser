@@ -13,9 +13,11 @@ class SimpleOrmUserServiceProvider implements ServiceProviderInterface
      * @return mixed
      */
     public function register(Application $app) {
-        $app['user.options'] = [
-            'userClass' => 'rootLogin\SimpleOrmUser\Entity\User',
-        ];
+
+        // overwrite default user class
+        $defaults = $app['user.options.default'];
+        $defaults['userClass'] = 'rootLogin\SimpleOrmUser\Entity\User';
+        $app['user.options.default'] = $defaults;
 
         $app['user.manager'] = $app->share(function($app) {
             $app['user.options.init']();
