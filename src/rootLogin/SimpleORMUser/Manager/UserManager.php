@@ -32,9 +32,6 @@ class UserManager extends \SimpleUser\UserManager
     /** @var EventDispatcher */
     protected $dispatcher;
 
-    /** @var User[] */
-    protected $identityMap = array();
-
     /** @var string */
     protected $userClass = '\rootLogin\SimpleORMUser\Entity\User';
 
@@ -415,25 +412,6 @@ class UserManager extends \SimpleUser\UserManager
         }
 
         return $errors;
-    }
-
-    /**
-     * Clear User instances from the identity map, so that they can be read again from the database.
-     *
-     * Call with no arguments to clear the entire identity map.
-     * Pass a single user to remove just that user from the identity map.
-     *
-     * @param mixed $user Either a User instance, an integer user ID, or null.
-     */
-    public function clearIdentityMap($user = null)
-    {
-        if ($user === null) {
-            $this->identityMap = array();
-        } else if ($user instanceof User && array_key_exists($user->getId(), $this->identityMap)) {
-            unset($this->identityMap[$user->getId()]);
-        } else if (is_numeric($user) && array_key_exists($user, $this->identityMap)) {
-            unset($this->identityMap[$user]);
-        }
     }
 
     /**
