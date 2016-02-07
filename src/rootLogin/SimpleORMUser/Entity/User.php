@@ -2,9 +2,9 @@
 
 /**
  * @license: LGPL-3.0
- **/ 
+ **/
 
-namespace rootLogin\SimpleORMUser\Entity;
+namespace rootLogin\SimpleOrmUser\Provider;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\AdvancedUserInterface;

@@ -22,6 +22,6 @@
         "ext-pdo_sqlite": "*"
     },
     "autoload": {
-        "psr-0": {"rootLogin\\SimpleORMUser": "src/"}
+        "psr-0": {"rootLogin\\SimpleOrmUser": "src/"}
     }
 }

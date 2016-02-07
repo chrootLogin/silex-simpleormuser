@@ -4,7 +4,7 @@
  * @license: LGPL-3.0
  **/
 
-namespace rootLogin\SimpleORMUser\Manager;
+namespace rootLogin\SimpleOrmUser\Provider;
 
 use Doctrine\ORM\EntityManager;
 use Saxulum\DoctrineOrmManagerRegistry\Doctrine\ManagerRegistry;
