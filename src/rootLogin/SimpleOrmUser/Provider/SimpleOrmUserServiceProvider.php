@@ -9,11 +9,6 @@ use Silex\ServiceProviderInterface;
 class SimpleOrmUserServiceProvider implements ServiceProviderInterface
 {
     /**
-     * @var Application
-     */
-    private $app;
-
-    /**
      * @param Application $app
      * @return mixed
      */
@@ -31,6 +26,8 @@ class SimpleOrmUserServiceProvider implements ServiceProviderInterface
 
             return $userManager;
         });
+
+        $this->addDoctrineOrmMappings($app);
     }
 
     /**
@@ -38,4 +35,37 @@ class SimpleOrmUserServiceProvider implements ServiceProviderInterface
      * @return mixed
      */
     public function boot(Application $app) {}
+
+    /**
+     * @param Application $app
+     */
+    protected function addDoctrineOrmMappings(Application $app)
+    {
+        if (!isset($app['orm.ems.options'])) {
+            $app['orm.ems.options'] = $app->share(function () use ($app) {
+                $options = array(
+                    'default' => $app['orm.em.default_options']
+                );
+                return $options;
+            });
+        }
+
+        $app['orm.ems.options'] = $app->share($app->extend('orm.ems.options', function (array $options) {
+            $options['default']['mappings'][] = array(
+                'type' => 'annotation',
+                'namespace' => 'rootLogin\SimpleOrmUser\Entity',
+                'path' => $this->getEntityPath(),
+                'use_simple_annotation_reader' => false,
+            );
+            return $options;
+        }));
+    }
+
+    /**
+     * @return string
+     */
+    protected function getEntityPath()
+    {
+        return realpath(__DIR__ . "/../Entity/");
+    }
 }
