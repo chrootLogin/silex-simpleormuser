@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * @license: LGPL-3.0
+ **/
+
 namespace rootLogin\SimpleORMUser\Manager;
 
 use Doctrine\ORM\EntityManager;

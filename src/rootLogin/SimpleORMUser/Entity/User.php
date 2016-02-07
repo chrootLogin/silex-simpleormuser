@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * @license: LGPL-3.0
+ **/ 
+
 namespace rootLogin\SimpleORMUser\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
