@@ -2,6 +2,7 @@
 
 namespace rootLogin\SimpleOrmUser\Provider;
 
+use rootLogin\SimpleOrmUser\Manager\UserManager;
 use Silex\Application;
 use Silex\ServiceProviderInterface;
 
@@ -18,7 +19,7 @@ class SimpleOrmUserServiceProvider implements ServiceProviderInterface
      */
     public function register(Application $app) {
         $app['user.options'] = [
-            'userClass' => 'rootLogin\SimpleORMUser\Entity\User',
+            'userClass' => 'rootLogin\SimpleOrmUser\Entity\User',
         ];
 
         $app['user.manager'] = $app->share(function($app) {

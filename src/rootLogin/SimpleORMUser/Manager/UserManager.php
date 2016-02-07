@@ -4,7 +4,7 @@
  * @license: LGPL-3.0
  **/
 
-namespace rootLogin\SimpleOrmUser\Provider;
+namespace rootLogin\SimpleOrmUser\Manager;
 
 use Doctrine\ORM\EntityManager;
 use Saxulum\DoctrineOrmManagerRegistry\Doctrine\ManagerRegistry;
@@ -43,12 +43,6 @@ class UserManager extends \SimpleUser\UserManager
 
     /** @var Callable */
     protected $passwordStrengthValidator;
-
-    /** @var string */
-    protected $userTableName = 'users';
-
-    /** @var string */
-    protected $userCustomFieldsTableName = 'user_custom_fields';
 
     /**
      * Constructor.
