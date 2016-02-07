@@ -341,8 +341,6 @@ class UserManager extends \SimpleUser\UserManager
         $this->doctrine->getManager()->persist($user);
         $this->doctrine->getManager()->flush();
 
-        $this->identityMap[$user->getId()] = $user;
-
         $this->dispatcher->dispatch(UserEvents::AFTER_INSERT, new UserEvent($user));
     }
 
