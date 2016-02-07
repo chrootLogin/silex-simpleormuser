@@ -2,9 +2,9 @@
 
 /**
  * @license: LGPL-3.0
- **/ 
+ **/
 
-namespace rootLogin\SimpleORMUser\Entity;
+namespace rootLogin\SimpleOrmUser\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\AdvancedUserInterface;
@@ -31,7 +31,7 @@ class User extends \SimpleUser\User
     /**
      * @var string
      *
-     * @ORM\Column(name="username", type="string", nullable=true, unique=true)
+     * @ORM\Column(name="username", type="string", nullable=true)
      */
     protected $username;
 
